@@ -45,51 +45,55 @@
         </div>
     </div>
 
-    <main class="min-h-screen p-8 lg:p-24 relative z-10 hidden" id="main-content">
-        <div class="w-full h-80 relative overflow-hidden mb-16 rounded-[60px] glass border-[#d4af37]/10 flex items-center justify-center">
-            <img src="Conference Logo.jpg" class="absolute inset-0 w-full h-full object-cover opacity-20 sepia-[.3] mix-blend-overlay select-none" alt="Conference Logo">
-            <div class="relative z-10 flex flex-col items-center">
-                <div class="text-[10px] font-black uppercase tracking-[1em] text-[#d4af37] mb-4 opacity-50">Official Delegate Guide</div>
-                <h1 class="text-white/20 text-[20px] lg:text-[40px] font-black uppercase tracking-[0.2em]">Insider Locals Guide</h1>
+    <main class="min-h-screen p-4 md:p-24 relative z-10 hidden" id="main-content">
+        <div class="w-full h-40 md:h-80 relative overflow-hidden mb-16 rounded-[40px] md:rounded-[60px] glass border-[#d4af37]/20 flex items-center justify-center bg-black/40">
+            <!-- Blurred Glow Background -->
+            <img src="Conference Logo.jpg" class="absolute inset-0 w-full h-full object-cover opacity-20 blur-2xl scale-125 select-none" alt="Background Blur">
+            <!-- Sharp Centered Logo for Mobile & Web -->
+            <img src="Conference Logo.jpg" class="relative z-0 max-w-[70%] max-h-[60%] object-contain opacity-60 mix-blend-screen select-none" alt="Conference Logo">
+            
+            <div class="absolute inset-0 z-10 flex flex-col items-center justify-center">
+                <div class="text-[9px] md:text-[11px] font-black uppercase tracking-[0.7em] text-[#d4af37] mb-2 md:mb-4 drop-shadow-md">Official Delegate Guide</div>
+                <h1 class="text-white text-[18px] md:text-[40px] font-black uppercase tracking-[0.2em] drop-shadow-lg text-center px-4">Insider Locals Guide</h1>
             </div>
         </div>
 
-        <header class="max-w-7xl mx-auto flex justify-between items-end mb-24 px-6">
+        <header class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-24 px-6 gap-8">
             <div>
-                <h2 class="text-6xl lg:text-9xl font-black tracking-tighter mb-4 lux-gradient">The Franschhoek Experience</h2>
-                <div class="flex items-center gap-4 text-white/40 text-[20px] lg:text-[40px] font-black uppercase tracking-[0.1em]">Welcome, <span id="display-name" class="text-white flex-shrink-0">Delegate</span></div>
+                <h2 class="text-5xl lg:text-9xl font-black tracking-tighter mb-4 lux-gradient">The Franschhoek Experience</h2>
+                <div class="flex items-center gap-4 text-white/60 text-[20px] lg:text-[40px] font-black uppercase tracking-[0.1em]">Welcome, <span id="display-name" class="text-white flex-shrink-0">Delegate</span></div>
             </div>
-            <button onclick="logout()" class="text-[12px] font-black uppercase tracking-[0.2em] opacity-60 hover:opacity-100 mb-8 bg-white/5 px-6 py-3 rounded-xl border border-white/10">Sign Out</button>
+            <button onclick="logout()" class="text-[12px] font-black uppercase tracking-[0.2em] opacity-80 hover:opacity-100 bg-white/5 px-8 py-4 rounded-xl border border-white/20">Sign Out</button>
         </header>
 
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div onclick="openCategory('coffee')" class="glass p-12 rounded-[60px] category-card cursor-pointer h-[400px] flex flex-col justify-between group overflow-hidden">
-                <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform duration-1000 opacity-80"><path d="M17 8h1a4 4 0 1 1 0 8h-1"></path><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"></path><line x1="6" y1="2" x2="6" y2="4"></line><line x1="10" y1="2" x2="10" y2="4"></line><line x1="14" y1="2" x2="14" y2="4"></line></svg>
-                <div><h3 class="text-4xl font-bold mb-2">Caffeine</h3><p class="text-[10px] opacity-30 uppercase tracking-[0.4em] font-black italic">Best Roasts & Coffee Shops</p></div>
+        <div class="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8">
+            <div onclick="openCategory('coffee')" class="glass p-6 md:p-12 rounded-[30px] md:rounded-[60px] category-card cursor-pointer h-[200px] md:h-[400px] flex flex-col justify-between group overflow-hidden">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" class="w-12 h-12 md:w-24 md:h-24 group-hover:scale-110 transition-transform duration-1000 opacity-80"><path d="M17 8h1a4 4 0 1 1 0 8h-1"></path><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"></path><line x1="6" y1="2" x2="6" y2="4"></line><line x1="10" y1="2" x2="10" y2="4"></line><line x1="14" y1="2" x2="14" y2="4"></line></svg>
+                <div><h3 class="text-xl md:text-4xl font-bold mb-1 md:mb-2">Caffeine</h3><p class="text-[8px] md:text-[10px] opacity-30 uppercase tracking-[0.2em] md:tracking-[0.4em] font-black italic text-nowrap">Best Roasts & Coffee Shops</p></div>
             </div>
-            <div onclick="openCategory('food')" class="glass p-12 rounded-[60px] category-card cursor-pointer h-[400px] flex flex-col justify-between group overflow-hidden">
-                <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform duration-1000 opacity-80"><path d="M6 13.8V4c0-1.1.9-2 2-2s2 .9 2 2v9.8C10 16 8 16 8 16s-2 0-2-2.2z"></path><path d="M14 2h1c1.1 0 2 .9 2 2v13.5c0 2.5-2 4.5-4.5 4.5S8 20 8 17.5V17"></path><path d="M18 17v-4h-4"></path></svg>
-                <div><h3 class="text-4xl font-bold mb-2">Gastronomy</h3><p class="text-[10px] opacity-30 uppercase tracking-[0.4em] font-black italic">Fine Dining & Bistro Guide</p></div>
+            <div onclick="openCategory('food')" class="glass p-6 md:p-12 rounded-[30px] md:rounded-[60px] category-card cursor-pointer h-[200px] md:h-[400px] flex flex-col justify-between group overflow-hidden">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" class="w-12 h-12 md:w-24 md:h-24 group-hover:scale-110 transition-transform duration-1000 opacity-80"><path d="M6 13.8V4c0-1.1.9-2 2-2s2 .9 2 2v9.8C10 16 8 16 8 16s-2 0-2-2.2z"></path><path d="M14 2h1c1.1 0 2 .9 2 2v13.5c0 2.5-2 4.5-4.5 4.5S8 20 8 17.5V17"></path><path d="M18 17v-4h-4"></path></svg>
+                <div><h3 class="text-xl md:text-4xl font-bold mb-1 md:mb-2">Gastronomy</h3><p class="text-[8px] md:text-[10px] opacity-30 uppercase tracking-[0.2em] md:tracking-[0.4em] font-black italic text-nowrap">Fine Dining & Bistro Guide</p></div>
             </div>
-            <div onclick="openCategory('vineyards')" class="glass p-12 rounded-[60px] category-card cursor-pointer h-[400px] flex flex-col justify-between group overflow-hidden">
-                <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform duration-1000 opacity-80"><path d="M8 22V10c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2v12"></path><path d="M12 8V2"></path><path d="M7 2h10"></path></svg>
-                <div><h3 class="text-4xl font-bold mb-2">Vineyards</h3><p class="text-[10px] opacity-30 uppercase tracking-[0.4em] font-black italic">Estates & Opening Times</p></div>
+            <div onclick="openCategory('vineyards')" class="glass p-6 md:p-12 rounded-[30px] md:rounded-[60px] category-card cursor-pointer h-[200px] md:h-[400px] flex flex-col justify-between group overflow-hidden">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" class="w-12 h-12 md:w-24 md:h-24 group-hover:scale-110 transition-transform duration-1000 opacity-80"><path d="M8 22V10c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2v12"></path><path d="M12 8V2"></path><path d="M7 2h10"></path></svg>
+                <div><h3 class="text-xl md:text-4xl font-bold mb-1 md:mb-2">Vineyards</h3><p class="text-[8px] md:text-[10px] opacity-30 uppercase tracking-[0.2em] md:tracking-[0.4em] font-black italic text-nowrap">Estates & Opening Times</p></div>
             </div>
-            <div onclick="openCategory('activities')" class="glass p-12 rounded-[60px] category-card cursor-pointer h-[400px] flex flex-col justify-between group overflow-hidden">
-                <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform duration-1000 opacity-80"><path d="m8 3 4-2 4 2"></path><path d="M12 1v20"></path><path d="m8 21 4 2 4-2"></path><path d="M2 13s2-2 10-2 10 2 10 2"></path><path d="M2 7s2-2 10-2 10 2 10 2"></path></svg>
-                <div><h3 class="text-4xl font-bold mb-2 text-[#d4af37]">Activities</h3><p class="text-[10px] opacity-30 uppercase tracking-[0.4em] font-black italic">Wine Tram & E-Bikes</p></div>
+            <div onclick="openCategory('activities')" class="glass p-6 md:p-12 rounded-[30px] md:rounded-[60px] category-card cursor-pointer h-[200px] md:h-[400px] flex flex-col justify-between group overflow-hidden">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" class="w-12 h-12 md:w-24 md:h-24 group-hover:scale-110 transition-transform duration-1000 opacity-80"><path d="m8 3 4-2 4 2"></path><path d="M12 1v20"></path><path d="m8 21 4 2 4-2"></path><path d="M2 13s2-2 10-2 10 2 10 2"></path><path d="M2 7s2-2 10-2 10 2 10 2"></path></svg>
+                <div><h3 class="text-xl md:text-4xl font-bold mb-1 md:mb-2 text-[#d4af37]">Activities</h3><p class="text-[8px] md:text-[10px] opacity-30 uppercase tracking-[0.2em] md:tracking-[0.4em] font-black italic text-nowrap">Wine Tram & E-Bikes</p></div>
             </div>
-            <div onclick="openCategory('trails')" class="glass p-12 rounded-[60px] category-card cursor-pointer h-[400px] flex flex-col justify-between group overflow-hidden">
-                <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform duration-1000 opacity-80"><path d="m16 4-4 3-4-3"></path><path d="M12 7v14"></path><path d="M9 21h6"></path><circle cx="12" cy="4" r="1"></circle></svg>
-                <div><h3 class="text-4xl font-bold mb-2">Active Hub</h3><p class="text-[10px] opacity-30 uppercase tracking-[0.4em] font-black italic">Running & Trails</p></div>
+            <div onclick="openCategory('trails')" class="glass p-6 md:p-12 rounded-[30px] md:rounded-[60px] category-card cursor-pointer h-[200px] md:h-[400px] flex flex-col justify-between group overflow-hidden">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" class="w-12 h-12 md:w-24 md:h-24 group-hover:scale-110 transition-transform duration-1000 opacity-80"><path d="m16 4-4 3-4-3"></path><path d="M12 7v14"></path><path d="M9 21h6"></path><circle cx="12" cy="4" r="1"></circle></svg>
+                <div><h3 class="text-xl md:text-4xl font-bold mb-1 md:mb-2">Active Hub</h3><p class="text-[8px] md:text-[10px] opacity-30 uppercase tracking-[0.2em] md:tracking-[0.4em] font-black italic text-nowrap">Running & Trails</p></div>
             </div>
-            <div onclick="openCategory('padel')" class="glass p-12 rounded-[60px] category-card cursor-pointer h-[400px] flex flex-col justify-between group overflow-hidden">
-                <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform duration-1000 opacity-80"><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"></path><path d="M12 8v8"></path></svg>
-                <div><h3 class="text-4xl font-bold mb-2">Padel & Sport</h3><p class="text-[10px] opacity-30 uppercase tracking-[0.4em] font-black italic">Clubs & Bookings</p></div>
+            <div onclick="openCategory('padel')" class="glass p-6 md:p-12 rounded-[30px] md:rounded-[60px] category-card cursor-pointer h-[200px] md:h-[400px] flex flex-col justify-between group overflow-hidden">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" class="w-12 h-12 md:w-24 md:h-24 group-hover:scale-110 transition-transform duration-1000 opacity-80"><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"></path><path d="M12 8v8"></path></svg>
+                <div><h3 class="text-xl md:text-4xl font-bold mb-1 md:mb-2">Padel & Sport</h3><p class="text-[8px] md:text-[10px] opacity-30 uppercase tracking-[0.2em] md:tracking-[0.4em] font-black italic text-nowrap">Clubs & Bookings</p></div>
             </div>
-            <div onclick="openCategory('bars')" class="glass p-12 rounded-[60px] category-card cursor-pointer h-[400px] flex flex-col justify-between group overflow-hidden">
-                <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform duration-1000 opacity-80"><path d="m19 2-7 11-7-11"></path><path d="m12 13 7 9"></path><path d="m12 13-7 9"></path><path d="M7 21h10"></path></svg>
-                <div><h3 class="text-4xl font-bold mb-2">Nightlife</h3><p class="text-[10px] opacity-30 uppercase tracking-[0.4em] font-black italic">Bars & Markets</p></div>
+            <div onclick="openCategory('bars')" class="glass p-6 md:p-12 rounded-[30px] md:rounded-[60px] category-card cursor-pointer h-[200px] md:h-[400px] flex flex-col justify-between group overflow-hidden">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" class="w-12 h-12 md:w-24 md:h-24 group-hover:scale-110 transition-transform duration-1000 opacity-80"><path d="m19 2-7 11-7-11"></path><path d="m12 13 7 9"></path><path d="m12 13-7 9"></path><path d="M7 21h10"></path></svg>
+                <div><h3 class="text-xl md:text-4xl font-bold mb-1 md:mb-2">Nightlife</h3><p class="text-[8px] md:text-[10px] opacity-30 uppercase tracking-[0.2em] md:tracking-[0.4em] font-black italic text-nowrap">Bars & Markets</p></div>
             </div>
             <div class="lg:col-span-3 mt-12 py-12 text-center opacity-10 uppercase tracking-[1em] text-[9px] font-black border-t border-white/5">
                 The Franschhoek Concierge • Stats Desk 2026
