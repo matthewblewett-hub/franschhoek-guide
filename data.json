@@ -1,7 +1,6 @@
 {
     "coffee": [
         {"name": "Terbodore Coffee Roasters", "hours": "07:00 - 17:00", "fav": "Big Dog Blend", "desc": "Famous for their coffee and the Great Dane mascot."},
-        {"name": "Big Dog Cafe", "hours": "08:00 - 16:30", "fav": "Flat White", "desc": "Modern venue with great brunch options."},
         {"name": "Huguenot Fine Chocolates", "hours": "09:00 - 17:30", "fav": "Hot Chocolate", "desc": "Strictly chocolate but the best in town."}
     ],
     "food": {
