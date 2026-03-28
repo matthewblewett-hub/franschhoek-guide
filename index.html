@@ -46,15 +46,16 @@
     </div>
 
     <main class="min-h-screen p-4 md:p-24 relative z-10 hidden" id="main-content">
-        <div class="w-full h-40 md:h-80 relative overflow-hidden mb-16 rounded-[40px] md:rounded-[60px] glass border-[#d4af37]/20 flex items-center justify-center bg-black/40">
+        <div class="w-full min-h-[240px] md:h-80 relative overflow-hidden mb-12 md:mb-16 rounded-[40px] md:rounded-[60px] glass border-[#d4af37]/30 flex flex-col items-center justify-center p-6 md:p-12 bg-black/60">
             <!-- Blurred Glow Background -->
-            <img src="Conference Logo.jpg" class="absolute inset-0 w-full h-full object-cover opacity-20 blur-2xl scale-125 select-none" alt="Background Blur">
-            <!-- Sharp Centered Logo for Mobile & Web -->
-            <img src="Conference Logo.jpg" class="relative z-0 max-w-[70%] max-h-[60%] object-contain opacity-60 mix-blend-screen select-none" alt="Conference Logo">
+            <img src="Conference Logo.jpg" class="absolute inset-0 w-full h-full object-cover opacity-10 blur-3xl scale-125 select-none pointer-events-none" alt="Background Blur">
             
-            <div class="absolute inset-0 z-10 flex flex-col items-center justify-center">
-                <div class="text-[9px] md:text-[11px] font-black uppercase tracking-[0.7em] text-[#d4af37] mb-2 md:mb-4 drop-shadow-md">Official Delegate Guide</div>
-                <h1 class="text-white text-[18px] md:text-[40px] font-black uppercase tracking-[0.2em] drop-shadow-lg text-center px-4">Insider Locals Guide</h1>
+            <!-- Sharp Centered Logo: Stacked on Mobile, Floating on PC -->
+            <img src="Conference Logo.jpg" class="relative z-0 w-[85%] md:w-auto md:max-h-[45%] object-contain opacity-100 mb-6 md:mb-10 select-none pointer-events-none drop-shadow-2xl" alt="Conference Logo">
+            
+            <div class="relative z-10 flex flex-col items-center justify-center text-center">
+                <div class="text-[8px] md:text-[11px] font-black uppercase tracking-[0.5em] md:tracking-[0.8em] text-[#d4af37] mb-2 md:mb-4 drop-shadow-sm whitespace-nowrap">Official Delegate Guide</div>
+                <h1 class="text-white text-[22px] md:text-[45px] font-black uppercase tracking-[0.1em] md:tracking-[0.2em] leading-tight drop-shadow-md">Insider Locals Guide</h1>
             </div>
         </div>
 
