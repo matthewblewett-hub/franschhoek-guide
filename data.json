@@ -1,0 +1,72 @@
+{
+    "coffee": [
+        {"name": "Terbodore Coffee Roasters", "hours": "07:00 - 17:00", "fav": "Big Dog Blend", "desc": "Famous for their coffee and the Great Dane mascot."},
+        {"name": "Big Dog Cafe", "hours": "08:00 - 16:30", "fav": "Flat White", "desc": "Modern venue with great brunch options."},
+        {"name": "Huguenot Fine Chocolates", "hours": "09:00 - 17:30", "fav": "Hot Chocolate", "desc": "Strictly chocolate but the best in town."}
+    ],
+    "food": {
+        "fine_dining": [
+            {"name": "La Petite Colombe", "desc": "Contemporary fine dining at Leeu Estates. High-theatre multi-course menus.", "hours": "Lunch & Dinner", "link": "https://www.dineplan.com/restaurants/la-petite-colombe"},
+            {"name": "Epice", "desc": "Spice-driven fine dining with global flavors. An intimate and unique culinary journey.", "hours": "Lunch & Dinner", "link": "https://www.dineplan.com/restaurants/epice"},
+            {"name": "Protégé", "desc": "Modern casual fine dining. Watch young chefs at work in the open kitchen.", "hours": "Lunch & Dinner", "link": "https://www.dineplan.com/restaurants/protege"},
+            {"name": "Le Coin Français", "desc": "Classic French techniques blended with South African flavors.", "hours": "Tue-Sat Dinner", "link": "https://lecoinfrancais.co.za/reservations/"},
+            {"name": "Chefs Warehouse at Maison", "desc": "Tapas-style sharing plates overlooking the vines.", "hours": "Lunch & Dinner", "link": "https://www.chefswarehouse.co.za/maison"}
+        ],
+        "casual_dining": [
+            {"name": "Reuben's Franschhoek", "desc": "Flagship of icon Reuben Riffel. Sophisticated brasserie fare.", "hours": "12:00 - 21:00", "link": "https://www.dineplan.com/restaurants/reubens-franschhoek"},
+            {"name": "Café du Vin", "desc": "Classic bistro atmosphere in one of the valley's oldest buildings.", "hours": "08:00 - 22:00", "link": "https://www.dineplan.com/restaurants/cafe-du-vin"},
+            {"name": "Monneaux Restaurant", "desc": "Contemporary South African cuisine in an elegant setting.", "hours": "18:00 - 21:30", "link": "https://www.dineplan.com/restaurants/monneaux"},
+            {"name": "The Station Pub", "desc": "Lively local favorite for burgers and craft beer.", "hours": "11:00 - Late", "link": "https://thestationpub.co.za/"},
+            {"name": "L'Ami Family Brasserie", "desc": "Refined Cape Winelands cooking with a French family feel.", "hours": "Lunch & Dinner", "link": "https://www.dineplan.com/restaurants/la-motte-restaurant"}
+        ],
+        "lunch_spots": [
+            {"name": "Orangerie at Le Lude", "desc": "Stunning French-inspired lunch. Famous for MCC and high tea.", "hours": "12:00 - 15:30", "link": "https://lelude.co.za/orangerie-restaurant/"},
+            {"name": "Grande Provence", "desc": "Heritage setting with seasonal lunch plates. The Oak Terrace is a favorite.", "hours": "12:00 - 15:00", "link": "https://www.grandeprovence.co.za/dine-with-us/the-restaurant"},
+            {"name": "The Franschhoek Cellar", "desc": "Garden lunches and family-friendly dining.", "hours": "10:00 - 18:00", "link": "https://www.dineplan.com/restaurants/the-franschhoek-cellar"},
+            {"name": "Two Lions", "desc": "Hidden gem at La Bourgogne with a secluded garden terrace.", "hours": "11:00 - 16:00", "link": "https://www.labourgogne.co.za/restaurant"},
+            {"name": "Leopard's Leap Rotisserie", "desc": "Harvest-style lunches and wood-fired rotisserie.", "hours": "11:00 - 16:00", "link": "https://leopardsleap.co.za/pages/rotisserie"}
+        ],
+        "breakfast_spots": [
+            {"name": "Smitten Café", "desc": "The best bakery and breakfast in town. Creative morning plates.", "hours": "08:00 - 12:00", "link": "https://smittencafe.co.za/"},
+            {"name": "Terbodore Franschhoek", "desc": "Excellent coffee and hearty breakfasts in a lively cafe.", "hours": "07:00 - 11:30", "link": "https://www.terbodorecoffee.co.za/"},
+            {"name": "Get Lost Coffee", "desc": "Minimalist coffee bar with incredible pastries.", "hours": "07:30 - 15:00", "link": "https://www.instagram.com/getlost_franschhoek/"},
+            {"name": "La Petite Ferme", "desc": "Gourmet breakfast with the best valley view in Franschhoek.", "hours": "08:00 - 10:30", "link": "https://www.lapetiteferme.co.za/restaurant/"},
+            {"name": "MIKO at Mont Rochelle", "desc": "Sophisticated breakfast offering within Richard Branson's estate.", "hours": "07:00 - 10:30", "link": "https://www.virginlimitededition.com/en/mont-rochelle/dining"}
+        ]
+    },
+    "vineyards": [
+        {"name": "Anthonij Rupert Wyne", "hours": "10:00 - 17:00", "desc": "Premium red wines and two distinct tasting rooms: Manor House and Terra Del Capo.", "link": "https://www.rupertwines.com/"},
+        {"name": "Boschendal Estate", "hours": "10:00 - 17:00", "desc": "One of SA's oldest farms. Award-winning wines and picnics under ancient oaks.", "link": "https://www.boschendal.com/"},
+        {"name": "Grande Provence", "hours": "10:00 - 17:30", "desc": "325 years of winemaking history merged with contemporary art and luxury.", "link": "https://www.grandeprovence.co.za/"},
+        {"name": "Haute Cabrière", "hours": "10:00 - 17:00", "desc": "Home of the iconic Chardonnay Pinot Noir. Panoramic views and MCC cave.", "link": "https://cabriere.co.za/"},
+        {"name": "Dieu Donné Vineyards", "hours": "10:00 - 16:30", "desc": "Intimate tasting experience with the best sunset views in the valley.", "link": "https://dieudonnevineyards.com/"}
+    ],
+    "activities": [
+        {"name": "Franschhoek Wine Tram", "desc": "Hop-on-hop-off adventure through the vineyards. The iconic way to see the valley.", "link": "https://winetram.co.za/"},
+        {"name": "E-Bike Wine Tour", "desc": "Guided half-day tour exploring hidden vineyards on electric bikes. Active and scenic.", "link": "https://www.vinebike.co.za/"},
+        {"name": "Franschhoek Motor Museum", "desc": "Over 100 classic cars showcasing a century of motoring history. Stunning collection.", "link": "https://www.fmm.co.za/"},
+        {"name": "Babylonstoren Gardens", "desc": "Explore the 5-hectare fairytale garden. A botanical masterpiece.", "link": "https://babylonstoren.com/garden"},
+        {"name": "Mont Rochelle Reserve", "desc": "10 hiking trails with breathtaking vistas. Requires a permit (available at 66 Huguenot St).", "link": "https://www.montrochelleadventure.co.za/"}
+    ],
+    "trails": [
+        {"name": "Mont Rochelle Nature Reserve", "type": "Hiking", "desc": "Stunning vistas of the Wemmershoek mountains. High elevation."},
+        {"name": "Cats Path", "type": "History Walk", "desc": "Historical pass over the mountains with spectacular valley views."},
+        {"name": "Babylonstoren Garden Walk", "type": "Casual", "desc": "Gentle stroll through one of the world's most beautiful gardens."},
+        {"name": "Rickety Bridge Vine-Walk", "type": "Vineyard Trail", "desc": "Scenic walk through the vineyards with a glass of wine in hand."}
+    ],
+    "padel": [
+        {"name": "Franschhoek Padel Club", "loc": "Maison Estate", "desc": "Premier courts in the winelands. Book via Playtomic app."},
+        {"name": "Pearl Valley Padel", "loc": "Val de Vie", "desc": "Stunning courts at the nearby Val de Vie estate."}
+    ],
+    "bars": [
+        {"name": "The Station Pub", "desc": "The local heartbeat. Historic train station with great beer and live sports."},
+        {"name": "Entree Bar", "desc": "Sophisticated cocktails and local craft beers on the main road."},
+        {"name": "The Yard", "desc": "Trendy meeting spot with a dedicated bar and artisanal vibes."},
+        {"name": "Tuk Tuk Microbrewery", "desc": "Craft beer and tacos in a vibrant industrial-chic setting."}
+    ],
+    "stats_desk": [
+        {"name": "Conference Venue Map", "desc": "Detailed map of the main hall and breakout sessions for the Statistics Conference.", "type": "INFO"},
+        {"name": "Delegate Happy Hour", "desc": "Special discount at The Station Pub for conference name-tag holders. Starts at 17:00.", "type": "EVENT"},
+        {"name": "Taxi & Shuttle Service", "desc": "Preferred shuttle service for Franschhoek valley. Dial +27 21 876 2112.", "type": "UI"}
+    ]
+}
