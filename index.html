@@ -327,7 +327,8 @@
                 document.getElementById('banner-bg').src = 'MONT BLEU White.png';
                 const logo = document.getElementById('banner-logo');
                 logo.src = 'MONT BLEU White.png';
-                logo.style.maxHeight = '70%'; // make the white text pop a bit larger
+                logo.style.maxHeight = 'none'; // remove max height restriction
+                logo.style.transform = 'scale(3)'; // Make it 3x bigger as requested
                 
                 document.getElementById('banner-subtitle').innerText = 'Exclusive Guest Guide';
                 document.getElementById('banner-title').innerText = 'Franschhoek Locals Guide';
