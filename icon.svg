@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Solid Black Background with rounded corners for aesthetics -->
+  <rect width="512" height="512" fill="#000000" rx="112" ry="112"/>
+  
+  <!-- Elegant Mountain Line -->
+  <path d="M 100 230 Q 160 190 200 150 Q 230 110 256 110 Q 282 110 312 150 Q 352 190 412 230" fill="none" stroke="#ffffff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Minimalist FH Text -->
+  <text x="50%" y="68%" font-family="system-ui, -apple-system, sans-serif" font-size="200" font-weight="900" fill="#ffffff" text-anchor="middle" dominant-baseline="middle" letter-spacing="-5">FH</text>
+</svg>
