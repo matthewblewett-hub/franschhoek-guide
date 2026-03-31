@@ -327,8 +327,12 @@
                 document.getElementById('banner-bg').src = 'MONT BLEU White.png';
                 const logo = document.getElementById('banner-logo');
                 logo.src = 'MONT BLEU White.png';
-                logo.style.maxHeight = 'none'; // remove max height restriction
-                logo.style.transform = 'scale(3)'; // Make it 3x bigger as requested
+                
+                // Make it much larger but let the browser constrain it inside the box
+                logo.style.transform = 'none'; 
+                logo.classList.remove('md:max-h-[45%]', 'w-[85%]', 'md:w-auto');
+                logo.classList.add('w-[95%]', 'md:w-[70%]', 'mb-2');
+                logo.style.maxHeight = '70%';
                 
                 document.getElementById('banner-subtitle').innerText = 'Exclusive Guest Guide';
                 document.getElementById('banner-title').innerText = 'Franschhoek Locals Guide';
