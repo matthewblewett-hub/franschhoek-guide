@@ -130,6 +130,14 @@
         <div class="max-w-4xl mx-auto mt-24 pt-12 border-t border-white/5 opacity-10 text-center uppercase tracking-[0.6em] text-[9px] font-black">THE FRANSCHHOEK CONCIERGE • POWERED BY AI</div>
     </div>
 
+    <!-- Custom iOS Install Prompt (Hidden by default) -->
+    <div id="ios-prompt" class="hidden fixed bottom-6 md:bottom-10 left-1/2 transform -translate-x-1/2 w-[95%] max-w-sm glass z-[150] p-6 rounded-3xl border border-[#d4af37]/30 text-center shadow-2xl flex flex-col items-center bg-black/95 backdrop-blur-xl">
+        <div class="w-12 h-1.5 bg-[#d4af37]/50 rounded-full mb-6"></div>
+        <h3 class="text-[#d4af37] text-lg font-black uppercase tracking-[0.2em] mb-4">Install App</h3>
+        <p id="ios-instruction" class="text-sm text-white/80 leading-relaxed max-w-[280px] mb-6 font-medium">To install on your iPhone...</p>
+        <button onclick="document.getElementById('ios-prompt').classList.add('hidden')" class="px-8 py-3 bg-white/10 rounded-full text-[10px] font-black tracking-[0.2em] uppercase hover:bg-white/20 transition-all w-full">Got it</button>
+    </div>
+
     <script>
         const placeData = {
             "coffee": [
@@ -382,18 +390,42 @@
         });
 
         function installApp() {
-            if (!deferredPrompt) return;
-            deferredPrompt.prompt();
-            deferredPrompt.userChoice.then((choiceResult) => {
-                if (choiceResult.outcome === 'accepted' && installBtn) {
-                    installBtn.classList.add('hidden');
-                }
-                deferredPrompt = null;
-            });
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted' && installBtn) {
+                        installBtn.classList.add('hidden');
+                    }
+                    deferredPrompt = null;
+                });
+            }
+        }
+
+        // Apple iOS Hijack for "Install App" button since Apple bans beforeinstallprompt
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+
+        if (isIOS && !isStandalone) {
+            if (installBtn) {
+                installBtn.classList.remove('hidden'); // Force show button
+                installBtn.onclick = function(e) {
+                    e.preventDefault();
+                    const promptEl = document.getElementById('ios-prompt');
+                    const instructionTxt = document.getElementById('ios-instruction');
+                    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+                    
+                    if (!isSafari) {
+                        instructionTxt.innerHTML = 'Apple strictly forces you to open this link in <strong class="text-[#d4af37]">Safari</strong>.<br><br>Copy this website address into Safari to install the App natively.';
+                    } else {
+                        instructionTxt.innerHTML = 'Tap the Share icon <strong class="text-xl">⍗</strong> at the bottom of Safari and select <strong class="text-white">Add to Home Screen</strong>.';
+                    }
+                    promptEl.classList.remove('hidden');
+                };
+            }
         }
 
         // Hide install button if launched as a standalone app
-        if (window.matchMedia('(display-mode: standalone)').matches && installBtn) {
+        if (isStandalone && installBtn) {
             installBtn.classList.add('hidden');
         }
     </script>
