@@ -33,9 +33,9 @@
     <div id="auth-portal" class="auth-overlay">
         <div class="max-w-md w-full p-12 text-center animate-in fade-in zoom-in duration-1000">
             <h1 class="text-7xl font-black mb-4 tracking-tighter italic">F•H</h1>
-            <p class="text-white/30 uppercase text-[10px] tracking-[0.8em] font-black mb-16">The Franschhoek Experience</p>
+            <p id="portal-subtitle" class="text-white/30 uppercase text-[10px] tracking-[0.8em] font-black mb-16">The Franschhoek Experience</p>
             <div class="glass p-10 rounded-[40px] border-[#d4af37]/10">
-                <p class="text-[9px] font-black uppercase tracking-[0.4em] text-[#d4af37] mb-8">Delegate Registration</p>
+                <p id="portal-form-title" class="text-[9px] font-black uppercase tracking-[0.4em] text-[#d4af37] mb-8">Delegate Registration</p>
                 <div class="space-y-4">
                     <input type="text" id="user-name" placeholder="Full Name">
                     <input type="email" id="user-email" placeholder="Delegate Email Address">
@@ -48,14 +48,14 @@
     <main class="min-h-screen p-4 md:p-24 relative z-10 hidden" id="main-content">
         <div class="w-full min-h-[240px] md:h-80 relative overflow-hidden mb-12 md:mb-16 rounded-[40px] md:rounded-[60px] glass border-[#d4af37]/30 flex flex-col items-center justify-center p-6 md:p-12 bg-black/60">
             <!-- Blurred Glow Background -->
-            <img src="Conference Logo.jpg" class="absolute inset-0 w-full h-full object-cover opacity-10 blur-3xl scale-125 select-none pointer-events-none" alt="Background Blur">
+            <img id="banner-bg" src="Conference Logo.jpg" class="absolute inset-0 w-full h-full object-cover opacity-10 blur-3xl scale-125 select-none pointer-events-none" alt="Background Blur">
             
             <!-- Sharp Centered Logo: Stacked on Mobile, Floating on PC -->
-            <img src="Conference Logo.jpg" class="relative z-0 w-[85%] md:w-auto md:max-h-[45%] object-contain opacity-100 mb-6 md:mb-10 select-none pointer-events-none drop-shadow-2xl" alt="Conference Logo">
+            <img id="banner-logo" src="Conference Logo.jpg" class="relative z-0 w-[85%] md:w-auto md:max-h-[45%] object-contain opacity-100 mb-6 md:mb-10 select-none pointer-events-none drop-shadow-2xl" alt="Conference Logo">
             
             <div class="relative z-10 flex flex-col items-center justify-center text-center">
-                <div class="text-[8px] md:text-[11px] font-black uppercase tracking-[0.5em] md:tracking-[0.8em] text-[#d4af37] mb-2 md:mb-4 drop-shadow-sm whitespace-nowrap">Official Delegate Guide</div>
-                <h1 class="text-white text-[22px] md:text-[45px] font-black uppercase tracking-[0.1em] md:tracking-[0.2em] leading-tight drop-shadow-md">Insider Locals Guide</h1>
+                <div id="banner-subtitle" class="text-[8px] md:text-[11px] font-black uppercase tracking-[0.5em] md:tracking-[0.8em] text-[#d4af37] mb-2 md:mb-4 drop-shadow-sm whitespace-nowrap">Official Delegate Guide</div>
+                <h1 id="banner-title" class="text-white text-[22px] md:text-[45px] font-black uppercase tracking-[0.1em] md:tracking-[0.2em] leading-tight drop-shadow-md">Insider Locals Guide</h1>
             </div>
         </div>
 
@@ -316,6 +316,36 @@
         }
 
         function closeModal() { document.getElementById('category-modal').classList.remove('active'); }
+        
+        function applyBranding() {
+            const hostname = window.location.hostname.toLowerCase();
+            const urlParams = new URLSearchParams(window.location.search);
+            const client = urlParams.get('client')?.toLowerCase();
+
+            // Detect Mont Bleu branding if ?client=montbleu is used, or if the domain is guide/locals
+            if (client === 'montbleu' || hostname.includes('guide') || hostname.includes('locals')) {
+                document.getElementById('banner-bg').src = 'MONT BLEU White.png';
+                const logo = document.getElementById('banner-logo');
+                logo.src = 'MONT BLEU White.png';
+                logo.style.maxHeight = '70%'; // make the white text pop a bit larger
+                
+                document.getElementById('banner-subtitle').innerText = 'Exclusive Guest Guide';
+                document.getElementById('banner-title').innerText = 'Franschhoek Locals Guide';
+                
+                document.title = "Mont Bleu • The Experience";
+                
+                const portalSub = document.getElementById('portal-subtitle');
+                if (portalSub) portalSub.innerText = "The Mont Bleu Experience";
+                
+                const portalTitle = document.getElementById('portal-form-title');
+                if (portalTitle) portalTitle.innerText = "Guest Registration";
+
+                const emailInput = document.getElementById('user-email');
+                if (emailInput) emailInput.placeholder = "Guest Email Address";
+            }
+        }
+        
+        applyBranding();
         checkAuth();
     </script>
 </body>
