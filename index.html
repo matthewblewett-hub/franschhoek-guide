@@ -2,8 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Franschhoek • The Experience</title>
+    
+    <!-- PWA / App Mode Meta Tags -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="Conference Logo.jpg">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
@@ -64,7 +71,10 @@
                 <h2 class="text-5xl lg:text-9xl font-black tracking-tighter mb-4 lux-gradient">The Franschhoek Experience</h2>
                 <div class="flex items-center gap-4 text-white/60 text-[20px] lg:text-[40px] font-black uppercase tracking-[0.1em]">Welcome, <span id="display-name" class="text-white flex-shrink-0">Delegate</span></div>
             </div>
-            <button onclick="logout()" class="text-[12px] font-black uppercase tracking-[0.2em] opacity-80 hover:opacity-100 bg-white/5 px-8 py-4 rounded-xl border border-white/20">Sign Out</button>
+            <div class="flex flex-col md:flex-row items-center gap-4">
+                <button id="installAppBtn" onclick="installApp()" class="hidden text-[12px] font-black uppercase tracking-[0.2em] bg-[#d4af37] text-black px-8 py-4 rounded-xl border border-[#d4af37] hover:bg-[#aa8a2e] shadow-[0_0_15px_rgba(212,175,55,0.4)] transition-all">Install App</button>
+                <button onclick="logout()" class="text-[12px] font-black uppercase tracking-[0.2em] opacity-80 hover:opacity-100 bg-white/5 px-8 py-4 rounded-xl border border-white/20">Sign Out</button>
+            </div>
         </header>
 
         <div class="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8">
@@ -352,6 +362,40 @@
         
         applyBranding();
         checkAuth();
+
+        // PWA Installation & Service Worker Logic
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js').then(reg => {
+                    console.log('SW registered:', reg.scope);
+                }).catch(err => console.log('SW reg failed:', err));
+            });
+        }
+
+        let deferredPrompt;
+        const installBtn = document.getElementById('installAppBtn');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            if (installBtn) installBtn.classList.remove('hidden');
+        });
+
+        function installApp() {
+            if (!deferredPrompt) return;
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted' && installBtn) {
+                    installBtn.classList.add('hidden');
+                }
+                deferredPrompt = null;
+            });
+        }
+
+        // Hide install button if launched as a standalone app
+        if (window.matchMedia('(display-mode: standalone)').matches && installBtn) {
+            installBtn.classList.add('hidden');
+        }
     </script>
 </body>
 </html>
