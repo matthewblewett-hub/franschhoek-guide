@@ -2,15 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Franschhoek • The Experience</title>
-    
-    <!-- PWA / App Mode Meta Tags -->
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#0a0a0a">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="apple-touch-icon" href="icon.svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
@@ -40,9 +33,9 @@
     <div id="auth-portal" class="auth-overlay">
         <div class="max-w-md w-full p-12 text-center animate-in fade-in zoom-in duration-1000">
             <h1 class="text-7xl font-black mb-4 tracking-tighter italic">F•H</h1>
-            <p id="portal-subtitle" class="text-white/30 uppercase text-[10px] tracking-[0.8em] font-black mb-16">The Franschhoek Experience</p>
+            <p class="text-white/30 uppercase text-[10px] tracking-[0.8em] font-black mb-16">The Franschhoek Experience</p>
             <div class="glass p-10 rounded-[40px] border-[#d4af37]/10">
-                <p id="portal-form-title" class="text-[9px] font-black uppercase tracking-[0.4em] text-[#d4af37] mb-8">Delegate Registration</p>
+                <p class="text-[9px] font-black uppercase tracking-[0.4em] text-[#d4af37] mb-8">Delegate Registration</p>
                 <div class="space-y-4">
                     <input type="text" id="user-name" placeholder="Full Name">
                     <input type="email" id="user-email" placeholder="Delegate Email Address">
@@ -52,179 +45,143 @@
         </div>
     </div>
 
-    <main class="min-h-screen p-4 md:p-24 relative z-10 hidden" id="main-content">
-        <div class="w-full min-h-[240px] md:h-80 relative overflow-hidden mb-12 md:mb-16 rounded-[40px] md:rounded-[60px] glass border-[#d4af37]/30 flex flex-col items-center justify-center p-6 md:p-12 bg-black/60">
-            <!-- Blurred Glow Background -->
-            <img id="banner-bg" src="Conference Logo.jpg" class="absolute inset-0 w-full h-full object-cover opacity-10 blur-3xl scale-125 select-none pointer-events-none" alt="Background Blur">
-            
-            <!-- Sharp Centered Logo: Stacked on Mobile, Floating on PC -->
-            <img id="banner-logo" src="Conference Logo.jpg" class="relative z-0 w-[85%] md:w-auto md:max-h-[45%] object-contain opacity-100 mb-6 md:mb-10 select-none pointer-events-none drop-shadow-2xl" alt="Conference Logo">
-            
-            <div class="relative z-10 flex flex-col items-center justify-center text-center">
-                <div id="banner-subtitle" class="text-[8px] md:text-[11px] font-black uppercase tracking-[0.5em] md:tracking-[0.8em] text-[#d4af37] mb-2 md:mb-4 drop-shadow-sm whitespace-nowrap">Official Delegate Guide</div>
-                <h1 id="banner-title" class="text-white text-[22px] md:text-[45px] font-black uppercase tracking-[0.1em] md:tracking-[0.2em] leading-tight drop-shadow-md">Insider Locals Guide</h1>
-            </div>
-        </div>
-
-        <header class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-24 px-6 gap-8">
+    <main class="min-h-screen p-8 lg:p-24 relative z-10 hidden" id="main-content">
+        <header class="max-w-7xl mx-auto flex justify-between items-end mb-16 px-6">
             <div>
-                <h2 class="text-5xl lg:text-9xl font-black tracking-tighter mb-4 lux-gradient">The Franschhoek Experience</h2>
-                <div class="flex items-center gap-4 text-white/60 text-[20px] lg:text-[40px] font-black uppercase tracking-[0.1em]">Welcome, <span id="display-name" class="text-white flex-shrink-0">Delegate</span></div>
+                <h1 class="text-white/20 text-[40px] font-black uppercase tracking-[0.2em] mb-4">Insider Locals Guide</h1>
+                <h2 class="text-5xl lg:text-8xl font-black tracking-tighter mb-4 lux-gradient">The Franschhoek Experience</h2>
+                <div class="flex items-center gap-4 text-white/40 text-[40px] font-black uppercase tracking-[0.1em]">Welcome, <span id="display-name" class="text-white flex-shrink-0">Delegate</span></div>
             </div>
-            <div class="flex flex-col md:flex-row items-center gap-4">
-                <button id="installAppBtn" onclick="installApp()" class="hidden text-[12px] font-black uppercase tracking-[0.2em] bg-[#d4af37] text-black px-8 py-4 rounded-xl border border-[#d4af37] hover:bg-[#aa8a2e] shadow-[0_0_15px_rgba(212,175,55,0.4)] transition-all">Install App</button>
-                <button onclick="logout()" class="text-[12px] font-black uppercase tracking-[0.2em] opacity-80 hover:opacity-100 bg-white/5 px-8 py-4 rounded-xl border border-white/20">Sign Out</button>
-            </div>
+            <button onclick="logout()" class="text-[9px] font-black uppercase tracking-[0.4em] opacity-30 hover:opacity-100">Sign Out</button>
         </header>
 
-        <div class="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8">
-            <div onclick="openCategory('coffee')" class="glass p-6 md:p-12 rounded-[30px] md:rounded-[60px] category-card cursor-pointer h-[200px] md:h-[400px] flex flex-col justify-between group overflow-hidden">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" class="w-12 h-12 md:w-24 md:h-24 group-hover:scale-110 transition-transform duration-1000 opacity-80"><path d="M17 8h1a4 4 0 1 1 0 8h-1"></path><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"></path><line x1="6" y1="2" x2="6" y2="4"></line><line x1="10" y1="2" x2="10" y2="4"></line><line x1="14" y1="2" x2="14" y2="4"></line></svg>
-                <div><h3 class="text-xl md:text-4xl font-bold mb-1 md:mb-2">Caffeine</h3><p class="text-[8px] md:text-[10px] opacity-30 uppercase tracking-[0.2em] md:tracking-[0.4em] font-black italic text-nowrap">Best Roasts & Coffee Shops</p></div>
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div onclick="openCategory('coffee')" class="glass p-12 rounded-[60px] category-card cursor-pointer h-[400px] flex flex-col justify-between group overflow-hidden">
+                <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform duration-1000 opacity-80"><path d="M17 8h1a4 4 0 1 1 0 8h-1"></path><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"></path><line x1="6" y1="2" x2="6" y2="4"></line><line x1="10" y1="2" x2="10" y2="4"></line><line x1="14" y1="2" x2="14" y2="4"></line></svg>
+                <div><h3 class="text-4xl font-bold mb-2">Caffeine</h3><p class="text-[10px] opacity-30 uppercase tracking-[0.4em] font-black italic">Best Roasts & Coffee Shops</p></div>
             </div>
-            <div onclick="openCategory('food')" class="glass p-6 md:p-12 rounded-[30px] md:rounded-[60px] category-card cursor-pointer h-[200px] md:h-[400px] flex flex-col justify-between group overflow-hidden">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" class="w-12 h-12 md:w-24 md:h-24 group-hover:scale-110 transition-transform duration-1000 opacity-80"><path d="M6 13.8V4c0-1.1.9-2 2-2s2 .9 2 2v9.8C10 16 8 16 8 16s-2 0-2-2.2z"></path><path d="M14 2h1c1.1 0 2 .9 2 2v13.5c0 2.5-2 4.5-4.5 4.5S8 20 8 17.5V17"></path><path d="M18 17v-4h-4"></path></svg>
-                <div><h3 class="text-xl md:text-4xl font-bold mb-1 md:mb-2">Gastronomy</h3><p class="text-[8px] md:text-[10px] opacity-30 uppercase tracking-[0.2em] md:tracking-[0.4em] font-black italic text-nowrap">Fine Dining & Bistro Guide</p></div>
+            <div onclick="openCategory('food')" class="glass p-12 rounded-[60px] category-card cursor-pointer h-[400px] flex flex-col justify-between group overflow-hidden">
+                <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform duration-1000 opacity-80"><path d="M6 13.8V4c0-1.1.9-2 2-2s2 .9 2 2v9.8C10 16 8 16 8 16s-2 0-2-2.2z"></path><path d="M14 2h1c1.1 0 2 .9 2 2v13.5c0 2.5-2 4.5-4.5 4.5S8 20 8 17.5V17"></path><path d="M18 17v-4h-4"></path></svg>
+                <div><h3 class="text-4xl font-bold mb-2">Gastronomy</h3><p class="text-[10px] opacity-30 uppercase tracking-[0.4em] font-black italic">Fine Dining & Bistro Guide</p></div>
             </div>
-            <div onclick="openCategory('vineyards')" class="glass p-6 md:p-12 rounded-[30px] md:rounded-[60px] category-card cursor-pointer h-[200px] md:h-[400px] flex flex-col justify-between group overflow-hidden">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" class="w-12 h-12 md:w-24 md:h-24 group-hover:scale-110 transition-transform duration-1000 opacity-80"><path d="M8 22V10c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2v12"></path><path d="M12 8V2"></path><path d="M7 2h10"></path></svg>
-                <div><h3 class="text-xl md:text-4xl font-bold mb-1 md:mb-2">Vineyards</h3><p class="text-[8px] md:text-[10px] opacity-30 uppercase tracking-[0.2em] md:tracking-[0.4em] font-black italic text-nowrap">Estates & Opening Times</p></div>
+            <div onclick="openCategory('vineyards')" class="glass p-12 rounded-[60px] category-card cursor-pointer h-[400px] flex flex-col justify-between group overflow-hidden">
+                <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform duration-1000 opacity-80"><path d="M8 22V10c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2v12"></path><path d="M12 8V2"></path><path d="M7 2h10"></path></svg>
+                <div><h3 class="text-4xl font-bold mb-2">Vineyards</h3><p class="text-[10px] opacity-30 uppercase tracking-[0.4em] font-black italic">Estates & Opening Times</p></div>
             </div>
-            <div onclick="openCategory('activities')" class="glass p-6 md:p-12 rounded-[30px] md:rounded-[60px] category-card cursor-pointer h-[200px] md:h-[400px] flex flex-col justify-between group overflow-hidden">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" class="w-12 h-12 md:w-24 md:h-24 group-hover:scale-110 transition-transform duration-1000 opacity-80"><path d="m8 3 4-2 4 2"></path><path d="M12 1v20"></path><path d="m8 21 4 2 4-2"></path><path d="M2 13s2-2 10-2 10 2 10 2"></path><path d="M2 7s2-2 10-2 10 2 10 2"></path></svg>
-                <div><h3 class="text-xl md:text-4xl font-bold mb-1 md:mb-2 text-[#d4af37]">Activities</h3><p class="text-[8px] md:text-[10px] opacity-30 uppercase tracking-[0.2em] md:tracking-[0.4em] font-black italic text-nowrap">Wine Tram & E-Bikes</p></div>
+            <div onclick="openCategory('activities')" class="glass p-12 rounded-[60px] category-card cursor-pointer h-[400px] flex flex-col justify-between group overflow-hidden">
+                <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform duration-1000 opacity-80"><path d="m8 3 4-2 4 2"></path><path d="M12 1v20"></path><path d="m8 21 4 2 4-2"></path><path d="M2 13s2-2 10-2 10 2 10 2"></path><path d="M2 7s2-2 10-2 10 2 10 2"></path></svg>
+                <div><h3 class="text-4xl font-bold mb-2 text-[#d4af37]">Activities</h3><p class="text-[10px] opacity-30 uppercase tracking-[0.4em] font-black italic">Wine Tram & E-Bikes</p></div>
             </div>
-            <div onclick="openCategory('trails')" class="glass p-6 md:p-12 rounded-[30px] md:rounded-[60px] category-card cursor-pointer h-[200px] md:h-[400px] flex flex-col justify-between group overflow-hidden">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" class="w-12 h-12 md:w-24 md:h-24 group-hover:scale-110 transition-transform duration-1000 opacity-80"><path d="m16 4-4 3-4-3"></path><path d="M12 7v14"></path><path d="M9 21h6"></path><circle cx="12" cy="4" r="1"></circle></svg>
-                <div><h3 class="text-xl md:text-4xl font-bold mb-1 md:mb-2">Active Hub</h3><p class="text-[8px] md:text-[10px] opacity-30 uppercase tracking-[0.2em] md:tracking-[0.4em] font-black italic text-nowrap">Running & Trails</p></div>
+            <div onclick="openCategory('trails')" class="glass p-12 rounded-[60px] category-card cursor-pointer h-[400px] flex flex-col justify-between group overflow-hidden">
+                <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform duration-1000 opacity-80"><path d="m16 4-4 3-4-3"></path><path d="M12 7v14"></path><path d="M9 21h6"></path><circle cx="12" cy="4" r="1"></circle></svg>
+                <div><h3 class="text-4xl font-bold mb-2">Active Hub</h3><p class="text-[10px] opacity-30 uppercase tracking-[0.4em] font-black italic">Running & Trails</p></div>
             </div>
-            <div onclick="openCategory('padel')" class="glass p-6 md:p-12 rounded-[30px] md:rounded-[60px] category-card cursor-pointer h-[200px] md:h-[400px] flex flex-col justify-between group overflow-hidden">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" class="w-12 h-12 md:w-24 md:h-24 group-hover:scale-110 transition-transform duration-1000 opacity-80"><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"></path><path d="M12 8v8"></path></svg>
-                <div><h3 class="text-xl md:text-4xl font-bold mb-1 md:mb-2">Padel & Sport</h3><p class="text-[8px] md:text-[10px] opacity-30 uppercase tracking-[0.2em] md:tracking-[0.4em] font-black italic text-nowrap">Clubs & Bookings</p></div>
+            <div onclick="openCategory('padel')" class="glass p-12 rounded-[60px] category-card cursor-pointer h-[400px] flex flex-col justify-between group overflow-hidden">
+                <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform duration-1000 opacity-80"><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"></path><path d="M12 8v8"></path></svg>
+                <div><h3 class="text-4xl font-bold mb-2">Padel & Sport</h3><p class="text-[10px] opacity-30 uppercase tracking-[0.4em] font-black italic">Clubs & Bookings</p></div>
             </div>
-            <div onclick="openCategory('bars')" class="glass p-6 md:p-12 rounded-[30px] md:rounded-[60px] category-card cursor-pointer h-[200px] md:h-[400px] flex flex-col justify-between group overflow-hidden">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" class="w-12 h-12 md:w-24 md:h-24 group-hover:scale-110 transition-transform duration-1000 opacity-80"><path d="m19 2-7 11-7-11"></path><path d="m12 13 7 9"></path><path d="m12 13-7 9"></path><path d="M7 21h10"></path></svg>
-                <div><h3 class="text-xl md:text-4xl font-bold mb-1 md:mb-2">Nightlife</h3><p class="text-[8px] md:text-[10px] opacity-30 uppercase tracking-[0.2em] md:tracking-[0.4em] font-black italic text-nowrap">Bars & Markets</p></div>
+            <div onclick="openCategory('bars')" class="glass p-12 rounded-[60px] category-card cursor-pointer h-[400px] flex flex-col justify-between group overflow-hidden">
+                <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform duration-1000 opacity-80"><path d="m19 2-7 11-7-11"></path><path d="m12 13 7 9"></path><path d="m12 13-7 9"></path><path d="M7 21h10"></path></svg>
+                <div><h3 class="text-4xl font-bold mb-2">Nightlife</h3><p class="text-[10px] opacity-30 uppercase tracking-[0.4em] font-black italic">Bars & Markets</p></div>
             </div>
-            <div onclick="openCategory('takeaway')" class="glass p-6 md:p-12 rounded-[30px] md:rounded-[60px] category-card cursor-pointer h-[200px] md:h-[400px] flex flex-col justify-between group overflow-hidden">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" class="w-12 h-12 md:w-24 md:h-24 group-hover:scale-110 transition-transform duration-1000 opacity-80"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                <div><h3 class="text-xl md:text-4xl font-bold mb-1 md:mb-2 text-[#d4af37]">Takeaway</h3><p class="text-[8px] md:text-[10px] opacity-30 uppercase tracking-[0.2em] md:tracking-[0.4em] font-black italic text-nowrap">Grab & Go Eats</p></div>
+            <div onclick="openCategory('stay')" class="glass p-12 rounded-[60px] category-card cursor-pointer h-[400px] flex flex-col justify-between group overflow-hidden border-[#d4af37]/30 shadow-[0_0_30px_rgba(212,175,55,0.1)]">
+                <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform duration-1000 opacity-80"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                <div><h3 class="text-4xl font-bold mb-2 text-[#d4af37]">Luxury Stay</h3><p class="text-[10px] opacity-30 uppercase tracking-[0.4em] font-black italic">Boutique Stays & Retreats</p></div>
             </div>
-            <div class="lg:col-span-3 mt-12 py-12 text-center opacity-10 uppercase tracking-[1em] text-[9px] font-black border-t border-white/5">
-                The Franschhoek Concierge • Stats Desk 2026
+            <div onclick="openCategory('takeaway')" class="glass p-12 rounded-[60px] category-card cursor-pointer h-[400px] flex flex-col justify-between group overflow-hidden">
+                <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform duration-1000 opacity-80"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                <div><h3 class="text-4xl font-bold mb-2">Takeaway</h3><p class="text-[10px] opacity-30 uppercase tracking-[0.4em] font-black italic">Grab & Go Eats</p></div>
+            </div>
+            <div class="lg:col-span-3 mt-8 w-full glass rounded-[60px] p-12 border-[#d4af37]/20 flex items-center justify-center bg-[#d4af37]/5 overflow-hidden">
+                <img src="Conference Logo.jpg" class="w-full max-h-[300px] object-contain opacity-50 sepia-[.5] mix-blend-luminosity select-none pointer-events-none" alt="Conference Logo">
             </div>
         </div>
     </main>
 
-    <div id="category-modal" class="detail-modal overflow-y-auto pt-0">
-        <div class="sticky top-0 z-50 glass border-b border-white/10 bg-[#0d0d0e]/80 backdrop-blur-3xl py-6 mb-12">
-            <header class="max-w-4xl mx-auto flex justify-between items-center px-4 md:px-8">
-                <h2 id="modal-title" class="text-3xl md:text-6xl font-black italic lux-gradient">Category</h2>
-                <button onclick="closeModal()" class="inline-flex items-center gap-2 md:gap-4 px-4 md:px-8 py-3 md:py-4 bg-white/5 border border-white/10 rounded-2xl text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] md:tracking-[0.4em] hover:bg-[#d4af37] hover:text-black transition-all group">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                    Back <span class="hidden md:inline">to Experience</span>
-                </button>
-            </header>
-        </div>
-        <div id="modal-grid" class="max-w-4xl mx-auto grid grid-cols-1 gap-6 px-4 md:px-8 pb-32"></div>
+    <div id="category-modal" class="detail-modal">
+        <header class="max-w-4xl mx-auto flex justify-between items-center mb-16 px-4">
+            <h2 id="modal-title" class="text-4xl lg:text-6xl font-black italic lux-gradient">Category</h2>
+            <button onclick="closeModal()" class="inline-flex items-center gap-4 px-8 py-4 bg-white/5 border border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-[0.4em] hover:bg-[#d4af37] hover:text-black transition-all group">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                Back to Experience
+            </button>
+        </header>
+        <div id="modal-grid" class="max-w-4xl mx-auto grid grid-cols-1 gap-6 px-4"></div>
         <div class="max-w-4xl mx-auto mt-24 pt-12 border-t border-white/5 opacity-10 text-center uppercase tracking-[0.6em] text-[9px] font-black">THE FRANSCHHOEK CONCIERGE • POWERED BY AI</div>
-    </div>
-
-    <!-- Custom iOS Install Prompt (Hidden by default) -->
-    <div id="ios-prompt" class="hidden fixed bottom-6 md:bottom-10 left-1/2 transform -translate-x-1/2 w-[95%] max-w-sm glass z-[150] p-6 rounded-3xl border border-[#d4af37]/30 text-center shadow-2xl flex flex-col items-center bg-black/95 backdrop-blur-xl">
-        <div class="w-12 h-1.5 bg-[#d4af37]/50 rounded-full mb-6"></div>
-        <h3 class="text-[#d4af37] text-lg font-black uppercase tracking-[0.2em] mb-4">Install App</h3>
-        <p id="ios-instruction" class="text-sm text-white/80 leading-relaxed max-w-[280px] mb-6 font-medium">To install on your iPhone, tap the Share icon at the bottom of Safari and select <strong class="text-white">Add to Home Screen</strong>.</p>
-        <button onclick="document.getElementById('ios-prompt').classList.add('hidden')" class="px-8 py-3 bg-white/10 rounded-full text-[10px] font-black tracking-[0.2em] uppercase hover:bg-white/20 transition-all w-full">Got it</button>
     </div>
 
     <script>
         const placeData = {
+            "stay": [
+                {"name": "Mont Bleu Guesthouse", "rank": 1, "hours": "Always Open", "addr": "Le Sanctuaire Farm", "phone": "+27 21 876 2112", "desc": "The ultimate Franschhoek retreat. A mountain sanctuary on the slopes of the Wemmershoek mountains. Refined tranquility, breathtaking vistas, and a private fynbos estate.", "img": "Images/concierge_landing_page_image.png", "website": "https://montbleu.co.za"}
+            ],
             "coffee": [
-                {"name": "The Mill Coffee Shop La Cotte", "rank": 1, "hours": "07:00 - 16:00", "addr": "La Cotte Farm", "phone": "+27 21 876 2112", "desc": "The local favorite. Stunning setting at La Cotte Farm with exceptional artisanal coffee.", "img": "Images/la-cotte-mill-1.webp", "website": "https://lacottefarm.com/"},
-                {"name": "Terbodore Coffee Roasters", "rank": 2, "hours": "07:00 - 17:00", "addr": "Main Rd", "phone": "+27 21 876 4731", "desc": "Famous for their roasts and the iconic Great Dane mascot. A must-visit caffeine stop.", "img": "Real_Images/terbodore.jpg", "website": "https://terbodore.com/"},
+                {"name": "The Mill Coffee Shop La Cotte", "rank": 1, "hours": "07:00 - 16:00", "addr": "La Cotte Farm", "phone": "+27 21 876 2112", "desc": "The local favorite. Stunning setting at La Cotte Farm with exceptional artisanal coffee.", "img": "Images/la-cotte-mill-1.webp", "website": "https://lacottefarm.com"},
+                {"name": "Terbodore Coffee Roasters", "rank": 2, "hours": "07:00 - 17:00", "addr": "Main Rd", "phone": "+27 21 876 4731", "desc": "Famous for their roasts and the iconic Great Dane mascot. A must-visit caffeine stop.", "img": "Real_Images/terbodore.jpg", "website": "https://www.terbodore.com"},
                 {"name": "The Hoek", "rank": 3, "hours": "07:30 - 16:30", "addr": "Huguenot St", "phone": "+27 21 876 2112", "desc": "Minimalist coffee bar with precision brewing and locally sourced beans.", "img": "Real_Images/the_hoek.png", "website": "https://www.facebook.com/thehoek/"},
-                {"name": "Motherdough", "rank": 4, "hours": "08:00 - 17:00", "addr": "Main St", "phone": "+27 21 876 2112", "desc": "Artisan sourdough bakery and coffee house. Exceptional pastries.", "img": "Real_Images/motherdough.jpg", "website": "https://motherdough.co.za/"},
-                {"name": "Get Lost Coffee", "rank": 5, "hours": "07:30 - 15:00", "addr": "Main St", "phone": "+27 21 876 2112", "desc": "Sleek, modern coffee bar with incredible pastries and a great local following. Perfect morning stop.", "img": "Real_Images/get_lost.jpg", "website": "https://getlostcoffee.co.za/"},
-                {"name": "Huguenot Fine Chocolates", "hours": "09:00 - 17:30", "desc": "Boutique chocolate experience and the best hot chocolate in the valley.", "img": "artisan_coffee_pour.png", "website": "https://huguenotchocolates.com/"}
+                {"name": "Motherdough", "rank": 4, "hours": "08:00 - 17:00", "addr": "Main St", "phone": "+27 21 876 2112", "desc": "Artisan sourdough bakery and coffee house. Exceptional pastries.", "img": "Real_Images/motherdough.jpg", "website": "https://motherdough.co.za"},
+                {"name": "Get Lost Coffee", "rank": 5, "hours": "07:30 - 15:00", "addr": "Main St", "phone": "+27 21 876 2112", "desc": "Sleek, modern coffee bar with incredible pastries and a great local following. Perfect morning stop.", "img": "Real_Images/get_lost.jpg", "website": "https://getlostcoffee.co.za"}
             ],
             "food": {
                 "fine_dining": [
-                    {"name": "Arkeste", "rank": 1, "hours": "Lunch & Dinner", "addr": "Chamonix Estate", "desc": "Closest to us. Exquisite dining by Richard Carstens on a working wine farm.", "img": "Arkeste.jpg", "website": "https://arkeste.com/"},
-                    {"name": "La Petite Colombe", "rank": 2, "hours": "Lunch & Dinner", "addr": "Leeu Estates", "phone": "+27 21 202 3395", "link": "https://www.dineplan.com/restaurants/la-petite-colombe-leeu-estates", "desc": "The pinnacle of Franschhoek dining. Multi-course theatrical menus overlooking the valley.", "img": "Images/La-Petite-Colombe.jpg", "website": "https://lapetitecolombe.restaurant/"},
-                    {"name": "Epice", "rank": 3, "hours": "Lunch & Dinner", "addr": "Le Quartier Français", "phone": "+27 21 492 4044", "link": "https://www.dineplan.com/restaurants/epice", "desc": "Spice-driven fine dining excellence with global flavors in an intimate setting.", "img": "Images/Epice.jpeg", "website": "https://epice.restaurant/"},
-                    {"name": "Protégé", "rank": 4, "hours": "Lunch & Dinner", "addr": "Le Quartier Français", "link": "https://www.dineplan.com/restaurants/protege", "desc": "Modern casual fine dining. Watch young chefs at work in the open kitchen.", "img": "fine_dining_signature_plate.png", "website": "https://protegerestaurant.co.za/"},
-                    {"name": "Orangerie at Le Lude", "rank": 5, "hours": "Lunch & High Tea", "addr": "Le Lude Estate", "phone": "+27 21 100 3464", "desc": "Classical French-inspired lunch in a stunning conservatory setting.", "img": "Images/Orangerie.jpeg", "website": "https://lelude.co.za/"},
-                    {"name": "Chefs Warehouse at Maison", "rank": 6, "hours": "Lunch & Dinner", "addr": "Maison Estate", "phone": "+27 21 876 2116", "desc": "Tapas-style sharing plates that celebrate seasonality and bold flavors.", "img": "Images/Chefs Warehouse.jpeg", "website": "https://www.chefswarehouse.co.za/"},
-                    {"name": "Le Coin Français", "hours": "18:30 - 20:30", "addr": "Huguenot St", "phone": "+27 74 126 0022", "desc": "Chef Darren Badenhorst's signature French techniques merged with Cape flavors.", "img": "Images/LE Coin.jpeg", "website": "https://lecoinfrancais.co.za/"}
+                    {"name": "Arkeste", "rank": 1, "hours": "Lunch & Dinner", "addr": "Chamonix Estate", "desc": "Closest to us. Exquisite dining by Richard Carstens on a working wine farm.", "website": "https://arkeste.com/", "img": "Images/La-Petite-Colombe.jpg"},
+                    {"name": "La Petite Colombe", "rank": 2, "hours": "Lunch & Dinner", "addr": "Leeu Estates", "phone": "+27 21 202 3395", "desc": "The pinnacle of Franschhoek dining. Multi-course theatrical menus overlooking the valley.", "img": "Images/La-Petite-Colombe.jpg", "website": "https://lapetitecolombe.restaurant/"},
+                    {"name": "Epice", "rank": 3, "hours": "Lunch & Dinner", "addr": "Le Quartier Français", "phone": "+27 21 492 4044", "desc": "Spice-driven fine dining excellence with global flavors in an intimate setting.", "img": "Images/Epice.jpeg", "website": "https://epice.restaurant/"},
+                    {"name": "Orangerie at Le Lude", "rank": 4, "hours": "Lunch & High Tea", "addr": "Le Lude Estate", "phone": "+27 21 100 3464", "desc": "Classical French-inspired lunch in a stunning conservatory setting.", "img": "Images/Orangerie.jpeg", "website": "https://lelude.co.za/"},
+                    {"name": "Chefs Warehouse at Maison", "rank": 5, "hours": "Lunch & Dinner", "addr": "Maison Estate", "phone": "+27 21 876 2116", "desc": "Tapas-style sharing plates that celebrate seasonality and bold flavors.", "img": "Images/Chefs Warehouse.jpeg", "website": "https://www.chefswarehouse.co.za/"},
+                    {"name": "Le Coin Français", "rank": 6, "hours": "18:30 - 20:30", "addr": "Huguenot St", "phone": "+27 74 126 0022", "desc": "Chef Darren Badenhorst's signature French techniques merged with Cape flavors.", "img": "Images/LE Coin.jpeg", "website": "https://lecoinfrancais.co.za/"}
                 ],
                 "casual_dining": [
-                    {"name": "Eleven", "rank": 1, "hours": "12:00 - 22:00", "addr": "Huguenot St", "desc": "Contemporary dining experience with local ingredients and brilliant flavors.", "img": "Eleven.jpg", "website": "https://www.eleventeats.co.za/"},
-                    {"name": "Reuben's Franschhoek", "rank": 2, "hours": "12:00 - 21:00", "addr": "Daniel Hugo St", "phone": "+27 21 876 3772", "link": "https://www.dineplan.com/restaurants/reubens-franschhoek", "desc": "The flagship of local icon Reuben Riffel. Sophisticated yet approachable.", "img": "Real_Images/reubens.jpg", "website": "https://reubens.co.za/"},
-                    {"name": "Glenwood Sushi", "rank": 3, "hours": "12:00 - 16:00", "addr": "Glenwood Vineyards", "desc": "Incredible sushi paired with excellent wines in a beautiful natural setting.", "img": "Glenwood.jpg", "website": "https://glenwoodvineyards.co.za/"},
-                    {"name": "L'Ami Family Brasserie", "rank": 4, "hours": "Lunch & Dinner", "addr": "La Motte Estate", "phone": "+27 21 876 8000", "link": "https://www.dineplan.com/restaurants/lami-family-brasserie", "desc": "Refined Cape Winelands cooking with a warm French family atmosphere.", "img": "Real_Images/lami.jpg", "website": "https://la-motte.com/"},
-                    {"name": "Yama Sushi", "rank": 5, "hours": "12:00 - 21:00", "addr": "Huguenot St", "phone": "+27 21 023 4847", "link": "https://www.dineplan.com/restaurants/yama-asian-eatery", "desc": "The best sushi in the valley. Clean, precise, and fresh seafood.", "img": "Real_Images/yama.jpg", "website": "https://eat-yama.co.za/"},
-                    {"name": "Café du Vin", "hours": "08:00 - 22:00", "desc": "Classic bistro atmosphere in one of the valley's oldest buildings.", "link": "https://www.dineplan.com/restaurants/cafe-du-vin", "img": "Cafe du Vin.jpg", "website": "https://cafeduvin.co.za/"},
-                    {"name": "Frank's Corner", "hours": "12:00 - 22:00", "addr": "Huguenot St", "phone": "+27 21 023 4844", "desc": "Modern pub and grill. The heartbeat of the town for premium steaks.", "img": "Real_Images/franks.jpg", "website": "https://franks-corner.com/"},
-                    {"name": "Tuk Tuk Microbrewery", "hours": "11:00 - Late", "addr": "Main Rd", "phone": "+27 21 492 2207", "desc": "Craft beer, tacos, and a lively vibe on the main road.", "img": "Images/Tuk-Tuk-Microbrewery-Franschhoek-Exterior-1280x800.png", "website": "https://tuktuk.co.za/"}
+                    {"name": "Eleven", "rank": 1, "hours": "12:00 - 22:00", "addr": "Huguenot St", "desc": "Contemporary dining experience with local ingredients and brilliant flavors.", "website": "https://www.eleventeats.co.za", "img": "Real_Images/reubens.jpg"},
+                    {"name": "Reuben's Franschhoek", "rank": 2, "hours": "12:00 - 21:00", "addr": "Daniel Hugo St", "phone": "+27 21 876 3772", "desc": "The flagship of local icon Reuben Riffel. Sophisticated yet approachable.", "img": "Real_Images/reubens.jpg", "website": "https://reubens.co.za/"},
+                    {"name": "Glenwood Sushi", "rank": 3, "hours": "12:00 - 16:00", "addr": "Glenwood Vineyards", "desc": "Incredible sushi paired with excellent wines in a beautiful natural setting.", "website": "https://glenwoodvineyards.co.za/", "img": "Real_Images/yama.jpg"},
+                    {"name": "L'Ami Family Brasserie", "rank": 4, "hours": "Lunch & Dinner", "addr": "La Motte Estate", "phone": "+27 21 876 8000", "desc": "Refined Cape Winelands cooking with a warm French family atmosphere.", "img": "Real_Images/lami.jpg", "website": "https://la-motte.com/"},
+                    {"name": "Yama Sushi", "rank": 5, "hours": "12:00 - 21:00", "addr": "Huguenot St", "phone": "+27 21 023 4847", "desc": "The best sushi in the valley. Clean, precise, and fresh seafood.", "img": "Real_Images/yama.jpg", "website": "https://eat-yama.co.za/"}
                 ],
                 "lunch_spots": [
-                    {"name": "La Motte Bakery", "rank": 1, "hours": "08:00 - 16:00", "addr": "La Motte Estate", "phone": "+27 21 876 8000", "desc": "World-class baking, incredible gardens, and scenic lunch plates.", "img": "Images/La Motte Bakery.jpeg", "website": "https://la-motte.com/"},
-                    {"name": "Deux Lions", "rank": 2, "hours": "11:00 - 16:00", "addr": "La Bourgogne", "phone": "+27 21 876 3245", "desc": "Hidden gem with a secluded garden terrace. Seasonal and fresh.", "img": "Images/Deux Lion Restuarant.jpeg", "website": "https://deuxlions.co.za/"},
-                    {"name": "Leopard's Leap Rotisserie", "rank": 3, "hours": "11:00 - 16:00", "addr": "Main Rd", "phone": "+27 21 876 8002", "desc": "Harvest-style lunches and wood-fired rotisserie.", "img": "Images/Leopards Leap Rotisserie.jpg", "website": "https://leopardsleap.co.za/"},
-                    {"name": "Mont Rochelle", "rank": 4, "hours": "12:00 - 15:00", "addr": "Mont Rochelle Estate", "phone": "+27 21 876 2770", "desc": "Gourmet lunch with breathtaking vistas from the terrace.", "img": "Images/Mont Rochelle Country Kitchen.jpg", "website": "https://virginlimitededition.com/"},
-                    {"name": "Rickety Bridge", "rank": 5, "hours": "11:00 - 16:00", "addr": "Main Rd", "phone": "+27 21 876 2129", "desc": "Classic vineyard lunch with mountain views.", "img": "Images/Rickety Bridge Restuarant.jpg", "website": "https://ricketybridge.com/"},
-                    {"name": "Grande Provence", "hours": "12:00 - 15:00", "desc": "Heritage setting with seasonal lunch plates. The Oak Terrace is a favorite.", "link": "https://www.grandeprovence.co.za/dine-with-us/the-restaurant", "img": "Images/Grand Provence Estate.webp", "website": "https://grandeprovence.co.za/"}
-                ],
-                "breakfast_spots": [
-                    {"name": "Smitten Café", "hours": "08:00 - 12:00", "desc": "The best bakery and breakfast in town. Creative morning plates.", "img": "artisan_coffee_pour.png", "website": "https://smittencafe.co.za/"},
-                    {"name": "La Petite Ferme", "hours": "08:00 - 10:30", "desc": "Gourmet breakfast with the best valley view in Franschhoek.", "img": "vineyard_vista_franschhoek.png", "website": "https://lapetiteferme.co.za/"},
-                    {"name": "MIKO at Mont Rochelle", "hours": "07:00 - 10:30", "desc": "Sophisticated breakfast offering within Richard Branson's estate.", "img": "Images/Mont Rochelle Country Kitchen.jpg", "website": "https://virginlimitededition.com/"}
+                    {"name": "La Motte Bakery", "rank": 1, "hours": "08:00 - 16:00", "addr": "La Motte Estate", "phone": "+27 21 876 8000", "desc": "World-class baking, incredible gardens, and scenic lunch plates.", "img": "Images/La Motte Bakery.jpeg", "website": "https://la-motte.com"},
+                    {"name": "Deux Lions", "rank": 2, "hours": "11:00 - 16:00", "addr": "La Bourgogne", "phone": "+27 21 876 3245", "desc": "Hidden gem with a secluded garden terrace. Seasonal and fresh.", "img": "Images/Deux Lion Restuarant.jpeg", "website": "https://deuxlions.co.za"},
+                    {"name": "Leopard's Leap Rotisserie", "rank": 3, "hours": "11:00 - 16:00", "addr": "Main Rd", "phone": "+27 21 876 8002", "desc": "Harvest-style lunches and wood-fired rotisserie.", "img": "Images/Leopards Leap Rotisserie.jpg", "website": "https://leopardsleap.co.za"},
+                    {"name": "Mont Rochelle", "rank": 4, "hours": "12:00 - 15:00", "addr": "Mont Rochelle Estate", "phone": "+27 21 876 2770", "desc": "Gourmet lunch with breathtaking vistas from the terrace.", "img": "Images/Mont Rochelle Country Kitchen.jpg", "website": "https://virginlimitededition.com"},
+                    {"name": "Rickety Bridge", "rank": 5, "hours": "11:00 - 16:00", "addr": "Main Rd", "phone": "+27 21 876 2129", "desc": "Classic vineyard lunch with mountain views.", "img": "Images/Rickety Bridge Restuarant.jpg", "website": "https://ricketybridge.com"}
                 ]
             },
             "takeaway": [
-                {"name": "Allora", "rank": 1, "hours": "12:00 - 21:30", "addr": "Huguenot St", "desc": "Delicious Italian takeaway and casual meals.", "img": "allora.jpeg", "website": "https://www.allora.co.za/"},
-                {"name": "Yama", "rank": 2, "hours": "12:00 - 21:00", "addr": "Huguenot St", "desc": "Excellent Asian eatery with great takeaway sushi.", "img": "Real_Images/yama.jpg", "website": "https://eat-yama.co.za/"},
-                {"name": "Let's Frite", "rank": 3, "hours": "11:00 - 20:00", "addr": "Reservoir St", "phone": "+27 84 502 5119", "desc": "Fast-casual eatery serving great burgers, specialty fries, and snacks.", "img": "Lets Frite.webp"}
+                {"name": "Allora", "rank": 1, "hours": "12:00 - 21:30", "addr": "Huguenot St", "desc": "Delicious Italian takeaway and casual meals.", "website": "https://www.allora.co.za", "img": "bistro_table_vibe.png"},
+                {"name": "Yama", "rank": 2, "hours": "12:00 - 21:00", "addr": "Huguenot St", "desc": "Excellent Asian eatery with great takeaway sushi.", "website": "https://eat-yama.co.za", "img": "Real_Images/yama.jpg"},
+                {"name": "Let's Frite", "rank": 3, "hours": "11:00 - 20:00", "addr": "Reservoir St", "phone": "+27 84 502 5119", "desc": "Fast-casual eatery serving great burgers, specialty fries, and snacks.", "img": "casual_vibe.png"}
             ],
             "vineyards": [
-                {"name": "Boschendal", "rank": 1, "hours": "10:00 - 17:00", "addr": "Pniel Rd", "phone": "+27 21 870 4200", "desc": "Historic heritage estate. One of SA's oldest farms. Award-winning wines.", "famous": "MCC & Heritage Blanc de Noir", "img": "Real_Images/boschendal.jpg", "website": "https://boschendal.com/"},
-                {"name": "La Motte", "rank": 2, "hours": "09:00 - 17:00", "addr": "Main Rd", "phone": "+27 21 876 8000", "desc": "Cultural heartbeat of the valley. Stunning gallery and Syrah excellence.", "famous": "Pierneef Syrah Viognier", "img": "Images/La Motte Estate.jpg", "website": "https://la-motte.com/"},
-                {"name": "Grande Provence", "rank": 3, "hours": "10:00 - 18:00", "addr": "Main Rd", "phone": "+27 21 876 8600", "desc": "325 years of winemaking heritage merged with contemporary art.", "famous": "The Grande Provence White", "img": "Images/Grand Provence Estate.webp", "website": "https://grandeprovence.co.za/"},
-                {"name": "Anthonij Rupert Wyne", "rank": 4, "hours": "10:00 - 17:00", "desc": "Premium red wines and two distinct tasting rooms: Manor House and Terra Del Capo.", "img": "Images/La Motte Estate.jpg", "website": "https://rupertwines.com/"},
-                {"name": "Haute Cabrière", "rank": 5, "hours": "10:00 - 17:00", "addr": "Pass Road", "phone": "+27 21 876 8500", "desc": "Home of the iconic Chardonnay Pinot Noir. Panoramic views and MCC cave.", "famous": "Chardonnay Pinot Noir & MCC", "img": "Real_Images/haute_cabriere.jpg", "website": "https://cabriere.co.za/"},
-                {"name": "Dieu Donné Vineyards", "hours": "10:00 - 16:30", "desc": "Intimate tasting experience with the best sunset views in the valley.", "img": "vineyard_vibe.png", "website": "https://dieudonnevineyards.com/"}
+                {"name": "Boschendal", "rank": 1, "hours": "10:00 - 17:00", "addr": "Pniel Rd", "phone": "+27 21 870 4200", "desc": "Historic heritage estate. High-end farm-to-table lunch.", "famous": "MCC & Heritage Blanc de Noir", "img": "Real_Images/boschendal.jpg", "website": "https://boschendal.com"},
+                {"name": "La Motte", "rank": 2, "hours": "09:00 - 17:00", "addr": "Main Rd", "phone": "+27 21 876 8000", "desc": "Cultural heartbeat of the valley. Stunning gallery.", "famous": "Pierneef Syrah Viognier", "img": "Images/La Motte Estate.jpg", "website": "https://la-motte.com"},
+                {"name": "Grande Provence", "rank": 3, "hours": "10:00 - 18:00", "addr": "Main Rd", "phone": "+27 21 876 8600", "desc": "325 years of winemaking heritage.", "famous": "The Grande Provence White", "img": "Images/Grand Provence Estate.webp", "website": "https://grandeprovence.co.za"},
+                {"name": "Rickety Bridge", "rank": 4, "hours": "10:00 - 17:30", "addr": "Main Rd", "phone": "+27 21 876 2129", "desc": "Boutique winery with majestic mountain views.", "famous": "Rickety Bridge Pinotage", "img": "Images/Rickety Bridge Estate.webp", "website": "https://ricketybridge.com"},
+                {"name": "Haute Cabrière", "rank": 5, "hours": "10:00 - 17:00", "addr": "Pass Road", "phone": "+27 21 876 8500", "desc": "Built into the mountain with panoramic vistas.", "famous": "Chardonnay Pinot Noir & MCC", "img": "Real_Images/haute_cabriere.jpg", "website": "https://cabriere.co.za"}
             ],
             "activities": [
-                {"name": "Franschhoek Village Market", "rank": 1, "hours": "Sat 09:00 - 15:00", "addr": "29 Huguenot Rd", "desc": "Popular outdoor Saturday market under the oak trees. Local foods, crafts, & live music.", "img": "bistro_table_vibe.png", "website": "https://franschhoekvillagemarket.co.za/"},
-                {"name": "Mont Rochelle Reserve", "rank": 2, "hours": "Dawn - Dusk", "addr": "Franschhoek Pass", "desc": "Breathtaking hiking trails at the summit. 10 trails with incredible vistas.", "img": "Images/Mont Rochelle Nature Reserve.jpg", "website": "https://montrochelleadventure.co.za/"},
-                {"name": "Babylonstoren Gardens", "rank": 3, "hours": "09:00 - 17:00", "addr": "Klapmuts Rd", "desc": "Explore the fairytale 8-acre garden. A botanical masterpiece.", "img": "babylonstoren_vibe.png", "website": "https://babylonstoren.com/"},
-                {"name": "Wine Tram", "rank": 4, "hours": "09:30 - 16:30", "addr": "Main St", "desc": "The iconic hop-on-hop-off adventure through the valley.", "img": "wine_tram_vibe.png", "website": "https://winetram.co.za/"},
-                {"name": "E-Bike Tours", "rank": 5, "addr": "Main St", "desc": "Guided half-day tours exploring hidden estates on electric bikes.", "img": "Images/Ebikes.jpeg", "website": "https://vinebike.co.za/"},
-                {"name": "Motor Museum", "rank": 6, "hours": "10:00 - 16:00", "addr": "L'Ormarins", "desc": "Over 100 classic cars showcasing a century of motoring history.", "img": "motor_museum_vibe.png", "website": "https://fmm.co.za/"}
+                {"name": "Franschhoek Village Market", "rank": 1, "hours": "Sat 09:00 - 15:00", "addr": "29 Huguenot Rd", "desc": "Popular outdoor Saturday market under the oak trees. Local foods, fresh produce, crafts, and live music.", "website": "https://franschhoekvillagemarket.co.za", "img": "bistro_table_vibe.png"},
+                {"name": "Mont Rochelle Reserve", "rank": 2, "hours": "Dawn - Dusk", "addr": "Franschhoek Pass", "desc": "Breathtaking hiking trails at the summit.", "img": "Images/Mont Rochelle Nature Reserve.jpg", "website": "https://montrochelleadventure.co.za"},
+                {"name": "Babylonstoren Gardens", "rank": 3, "hours": "09:00 - 17:00", "addr": "Klapmuts Rd", "desc": "Explore the fairytale 8-acre garden.", "img": "babylonstoren_vibe.png", "website": "https://babylonstoren.com"},
+                {"name": "Wine Tram", "rank": 4, "hours": "09:30 - 16:30", "addr": "Main St", "desc": "Quintessential Franschhoek adventure.", "img": "wine_tram_vibe.png", "website": "https://winetram.co.za"},
+                {"name": "E-Bike Tours", "rank": 5, "addr": "Main St", "desc": "Guided half-day tours exploring hidden estates.", "img": "Images/Ebikes.jpeg", "website": "https://vinebike.co.za"},
+                {"name": "Motor Museum", "rank": 6, "hours": "10:00 - 16:00", "addr": "L'Ormarins", "desc": "One of the world's finest collections.", "img": "motor_museum_vibe.png", "website": "https://fmm.co.za"}
             ],
             "trails": [
-                {"name": "Cats Path", "rank": 1, "desc": "Historical pass over the mountains with spectacular valley views.", "img": "Images/Cats Path.webp"},
-                {"name": "Berg River Dam", "rank": 2, "desc": "Beautiful trails encircling the dam. Blue flag hiking.", "img": "Images/Berg River Dam.jpg"},
-                {"name": "Le Sanctuaire Fynbos", "rank": 3, "desc": "Your exclusive private fynbos experience on the estate.", "img": "Images/Trails.jpg"},
-                {"name": "La Motte Trail", "rank": 4, "desc": "Stunning loop through valley proteas and mountain fynbos.", "img": "Images/La Motte Nature Hike.jpg", "website": "https://la-motte.com/"}
+                {"name": "Cats Path", "rank": 1, "desc": "Steep and rewarding climb with 360-degree vistas.", "img": "Images/Cats Path.webp"},
+                {"name": "Berg River Dam", "rank": 2, "desc": "Beautiful trails encircling the dam.", "img": "Images/Berg River Dam.jpg"},
+                {"name": "Le Sanctuaire Fynbos", "rank": 3, "desc": "Your exclusive private fynbos experience.", "img": "Images/Trails.jpg"},
+                {"name": "La Motte Trail", "rank": 4, "desc": "Stunning loop through valley proteas.", "img": "Images/La Motte Nature Hike.jpg", "website": "https://la-motte.com"}
             ],
             "padel": [
-                {"name": "Franschhoek Padel Club", "rank": 1, "addr": "Maison Estate", "desc": "Premier courts in the winelands. Book via Playtomic.", "img": "Images/ricketry bridge.avif"},
-                {"name": "Rickety Bridge Padel Club", "rank": 2, "addr": "Rickety Bridge", "desc": "Premier courts amidst the vineyards.", "img": "padel_vibe.png"},
-                {"name": "Drakenstein Padel", "rank": 3, "addr": "Simondium", "desc": "Lively local sports hub and courts.", "img": "padel_court_franschhoek.png"},
-                {"name": "Bowling Club", "rank": 4, "addr": "Huguenot St", "desc": "Historic heart of sport in the town.", "img": "Images/Bowling.jpg"}
+                {"name": "Rickety Bridge Padel Club", "rank": 1, "addr": "Rickety Bridge", "desc": "Premier courts amidst the vineyards.", "img": "Images/ricketry bridge.avif"},
+                {"name": "Drakenstein Padel", "rank": 2, "addr": "Simondium", "desc": "Lively local sports hub.", "img": "padel_vibe.png"},
+                {"name": "Bowling Club", "rank": 3, "addr": "Huguenot St", "desc": "Historic heart of sport in the town.", "img": "Images/Bowling.jpg"}
             ],
             "bars": [
-                {"name": "Mon Amour", "rank": 1, "addr": "Main Rd", "desc": "Elegant cocktails, French vibes, and vibrant atmosphere.", "img": "Images/Mon Amour.png", "website": "https://monamour.co.za/"},
-                {"name": "Allora", "rank": 2, "addr": "Huguenot St", "desc": "Delicious Italian flavors and great atmosphere.", "img": "allora.jpeg", "website": "https://www.allora.co.za/"},
-                {"name": "Col'Cacchio", "rank": 3, "addr": "Main Road", "desc": "Artisanal wood-fired pizzas and pasta.", "img": "bistro_table_vibe.png", "website": "https://colcacchio.co.za/"},
-                {"name": "Tuk Tuk Microbrewery", "rank": 4, "addr": "Main Rd", "desc": "Craft beer and great tacos in a vibrant industrial-chic setting.", "img": "Images/Tuk-Tuk-Microbrewery-Franschhoek-Exterior-1280x800.png", "website": "https://tuktuk.co.za/"}
-            ],
-            "stats_desk": [
-                {"name": "Conference Venue Map", "desc": "Detailed map of the main hall and breakout sessions for the Statistics Conference.", "img": "concierge_landing_page_image.png"},
-                {"name": "Delegate Happy Hour", "desc": "Special discount at The Station Pub for conference name-tag holders. Starts at 17:00.", "img": "Images/Station-Pub-Franschhoek-Exterior.png"},
-                {"name": "Taxi & Shuttle Service", "desc": "Preferred shuttle service for Franschhoek valley. Dial +27 21 876 2112.", "img": "vineyard_vibe.png"}
+                {"name": "Mon Amour", "rank": 1, "addr": "Main Rd", "desc": "Elegant cocktails and vibrant atmosphere.", "img": "Images/Mon Amour.png", "website": "https://monamour.co.za/"},
+                {"name": "Allora", "rank": 2, "addr": "Huguenot St", "desc": "Delicious Italian flavors and great atmosphere.", "website": "https://www.allora.co.za", "img": "bistro_table_vibe.png"},
+                {"name": "Col'Cacchio", "rank": 3, "addr": "Main Road", "desc": "Artisanal wood-fired pizzas and pasta.", "website": "https://colcacchio.co.za/", "img": "bistro_table_vibe.png"},
+                {"name": "Tuk Tuk Microbrewery", "rank": 4, "addr": "Main Rd", "desc": "Craft beer and great tacos.", "img": "Images/Tuk-Tuk-Microbrewery-Franschhoek-Exterior-1280x800.png", "website": "https://tuktuk.co.za"}
             ]
         };
 
@@ -242,19 +199,7 @@
             const name = document.getElementById('user-name').value;
             const email = document.getElementById('user-email').value;
             if (name && email) {
-                // 1. Store locally for the user experience
                 localStorage.setItem('concierge_user', JSON.stringify({ name, email }));
-                
-                // 2. Secretly sync to your Google Sheet (Background Process)
-                const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzxszqB3WaC5s6s72Or7dDn1T32j1Bb1rbCQzhD_AfNzjQ4nnd0k_RNH5wqqF-PvB0/exec'; 
-                fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    cache: 'no-cache',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name, email, timestamp: new Date().toLocaleString() })
-                }).catch(e => console.warn('Sync pending...', e));
-
                 checkAuth();
             } else alert('Please enter your credentials.');
         }
@@ -269,22 +214,22 @@
             modal.classList.add('active');
 
             const defaultVibes = {
+                "stay": "concierge_landing_page_image.png",
                 "coffee": "artisan_coffee_pour.png",
                 "food": "fine_dining_signature_plate.png",
                 "vineyards": "vineyard_vista_franschhoek.png",
                 "activities": "vineyard_vibe.png",
                 "padel": "padel_court_franschhoek.png",
                 "bars": "bistro_table_vibe.png",
-                "takeaway": "casual_vibe.png",
                 "stats_desk": "concierge_landing_page_image.png"
             };
 
             if (id === 'food') {
                 title.innerText = "GASTRONOMY";
                 grid.innerHTML = `<img src="fine_dining_signature_plate.png?v=${Date.now()}" class="w-full h-64 object-cover rounded-[50px] mb-12 shadow-2xl">`;
-                const cats = { "fine_dining": "Fine Dining", "casual_dining": "Casual Dining", "lunch_spots": "Vines & Views", "breakfast_spots": "Morning Pick-Me-Ups" };
+                const cats = { "fine_dining": "Fine Dining", "casual_dining": "Casual Dining", "lunch_spots": "Vines & Views" };
                 Object.keys(cats).forEach(c => {
-                    grid.innerHTML += `<div class="text-3xl md:text-4xl font-black uppercase tracking-[0.2em] md:tracking-[0.3em] text-[#d4af37] mb-6 mt-16 px-6 border-l-4 border-[#d4af37] ml-2">${cats[c]}</div>`;
+                    grid.innerHTML += `<div class="text-3xl font-black uppercase tracking-[0.2em] text-[#d4af37] mb-6 mt-16 px-6 border-l-4 border-[#d4af37] ml-2">${cats[c]}</div>`;
                     (placeData.food[c] || []).forEach(item => {
                         grid.innerHTML += renderPlaceCard(item, item.img || defaultVibes.food);
                     });
@@ -311,21 +256,10 @@
                     <p class="text-[#f1f1f1] text-base leading-relaxed mb-6 font-medium">${item.desc}</p>
                     <div class="space-y-4 mb-8">
                         ${item.famous ? `<div class="text-sm font-black italic uppercase tracking-widest text-[#d4af37]">Famous For: ${item.famous}</div>` : ''}
-                        ${item.website ? `
-                        <div class="flex items-center gap-3 mt-3 mb-2">
-                            <span class="text-[#d4af37]">🌐</span>
-                            <a href="${item.website}" target="_blank" class="hover:text-[#d4af37] underline decoration-[#d4af37]/30 underline-offset-4 font-bold border-b border-[#d4af37]/50">Website</a>
-                        </div>` : ''}
-                        <div class="flex items-center gap-6 text-sm font-semibold">
-                            <div class="flex items-center gap-3">
-                                <span class="text-[#d4af37]">📍</span>
-                                <a href="${mapLink}" target="_blank" class="hover:text-[#d4af37] underline decoration-[#d4af37]/30 underline-offset-4 font-bold border-b border-[#d4af37]/50">${item.addr || 'View on Maps'}</a>
-                            </div>
-                            ${item.link ? `
-                            <div class="flex items-center gap-3">
-                                <span class="text-[#d4af37]">📅</span>
-                                <a href="${item.link}" target="_blank" class="hover:text-[#d4af37] font-bold text-[#d4af37] uppercase tracking-wider text-[11px] bg-[#d4af37]/10 px-3 py-1 rounded-lg border border-[#d4af37]/20">Book Online</a>
-                            </div>` : ''}
+                        ${item.website ? `<div class="flex items-center gap-3 text-sm font-semibold"><span class="text-[#d4af37]">🌐</span><a href="${item.website}" target="_blank" class="hover:text-[#d4af37] underline decoration-[#d4af37]/30 underline-offset-4 font-bold border-b border-[#d4af37]/50">Website</a></div>` : ''}
+                        <div class="flex items-center gap-3 text-sm font-semibold">
+                            <span class="text-[#d4af37]">📍</span>
+                            <a href="${mapLink}" target="_blank" class="hover:text-[#d4af37] underline decoration-[#d4af37]/30 underline-offset-4 font-bold border-b border-[#d4af37]/50">${item.addr || 'View on Maps'}</a>
                         </div>
                         ${item.phone ? `<div class="flex items-center gap-3 text-sm font-semibold"><span class="text-[#d4af37]">📞</span><a href="tel:${item.phone}" class="hover:text-[#d4af37] font-bold">${item.phone}</a></div>` : ''}
                     </div>
@@ -334,100 +268,7 @@
         }
 
         function closeModal() { document.getElementById('category-modal').classList.remove('active'); }
-        
-        function applyBranding() {
-            const hostname = window.location.hostname.toLowerCase();
-            const urlParams = new URLSearchParams(window.location.search);
-            const client = urlParams.get('client')?.toLowerCase();
-
-            // Detect Mont Bleu branding if ?client=montbleu is used, or if the domain is guide/locals
-            if (client === 'montbleu' || hostname.includes('guide') || hostname.includes('locals')) {
-                document.getElementById('banner-bg').src = 'MONT BLEU White.png';
-                const logo = document.getElementById('banner-logo');
-                logo.src = 'MONT BLEU White.png';
-                
-                // Make it much larger but let the browser constrain it inside the box
-                logo.style.transform = 'none'; 
-                logo.classList.remove('md:max-h-[45%]', 'w-[85%]', 'md:w-auto');
-                logo.classList.add('w-[95%]', 'md:w-[70%]', 'mb-2');
-                logo.style.maxHeight = '70%';
-                
-                document.getElementById('banner-subtitle').innerText = 'Exclusive Guest Guide';
-                document.getElementById('banner-title').innerText = 'Franschhoek Locals Guide';
-                
-                document.title = "Mont Bleu • The Experience";
-                
-                const portalSub = document.getElementById('portal-subtitle');
-                if (portalSub) portalSub.innerText = "The Mont Bleu Experience";
-                
-                const portalTitle = document.getElementById('portal-form-title');
-                if (portalTitle) portalTitle.innerText = "Guest Registration";
-
-                const emailInput = document.getElementById('user-email');
-                if (emailInput) emailInput.placeholder = "Guest Email Address";
-            }
-        }
-        
-        applyBranding();
         checkAuth();
-
-        // PWA Installation & Service Worker Logic
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js').then(reg => {
-                    console.log('SW registered:', reg.scope);
-                }).catch(err => console.log('SW reg failed:', err));
-            });
-        }
-
-        let deferredPrompt;
-        const installBtn = document.getElementById('installAppBtn');
-
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            if (installBtn) installBtn.classList.remove('hidden');
-        });
-
-        function installApp() {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then((choiceResult) => {
-                    if (choiceResult.outcome === 'accepted' && installBtn) {
-                        installBtn.classList.add('hidden');
-                    }
-                    deferredPrompt = null;
-                });
-            }
-        }
-
-        // Apple iOS Hijack for "Install App" button since Apple bans beforeinstallprompt
-        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-        const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
-
-        if (isIOS && !isStandalone) {
-            if (installBtn) {
-                installBtn.classList.remove('hidden'); // Force show button
-                installBtn.onclick = function(e) {
-                    e.preventDefault();
-                    const promptEl = document.getElementById('ios-prompt');
-                    const instructionTxt = document.getElementById('ios-instruction');
-                    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-                    
-                    if (!isSafari) {
-                        instructionTxt.innerHTML = 'Apple strictly forces you to open this link in <strong class="text-[#d4af37]">Safari</strong>.<br><br>Copy this website address into Safari to install the App natively.';
-                    } else {
-                        instructionTxt.innerHTML = 'Tap the Share icon <strong class="text-xl">⍗</strong> at the bottom of Safari and select <strong class="text-white">Add to Home Screen</strong>.';
-                    }
-                    promptEl.classList.remove('hidden');
-                };
-            }
-        }
-
-        // Hide install button if launched as a standalone app
-        if (isStandalone && installBtn) {
-            installBtn.classList.add('hidden');
-        }
     </script>
 </body>
 </html>
